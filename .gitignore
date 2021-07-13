@@ -1,0 +1,13 @@
+**/.DS_Store
+**/.git/
+**/.dub/
+**/dub.selections.json
+**/*-test-*
+
+libke-*
+ke-api-*
+
+**/*.code-workspace
+**/.vscode
+
+**/.idea

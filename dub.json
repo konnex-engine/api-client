@@ -1,0 +1,30 @@
+{
+	"authors": [
+		"The Konnex Engine Foundation"
+	],
+	"configurations": [
+		{
+			"dependencies": {
+				"silly": "~>1.1.1"
+			},
+			"name": "konnexengine",
+			"targetType": "sourceLibrary"
+		},
+		{
+			"dependencies": {
+				"silly": "~>1.1.1"
+			},
+			"name": "unittest",
+			"targetType": "library"
+		}
+	],
+	"copyright": "Copyright © 2021, The Konnex Engine Foundation",
+	"dependencies": {
+		"fastjwt": "~>1.1.1",
+		"money": "~>3.0.2",
+		"vibe-d": "~>0.9.3"
+	},
+	"description": "The Konnex Engine API Client SDK",
+	"license": "proprietary",
+	"name": "konnexengine"
+}
