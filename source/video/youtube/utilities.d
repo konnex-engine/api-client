@@ -1,5 +1,6 @@
 module konnexengine.video.youtube.utilities;
 
+import std.conv: to;
 import vibe.core.log: logInfo;
 import vibe.http.client;
 import vibe.stream.operations;
@@ -24,7 +25,7 @@ string getVideosFromYoutube(const string url)
 		}
 
 		videos = res.bodyReader.readAllUTF8();
-
+		logInfo(videos);
 	});
 	return videos;
 }

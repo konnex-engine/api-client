@@ -171,6 +171,9 @@ unittest
 	assert(user.id() == sha1UUID(user.username, sha1UUID("namespace")));
 	assert(user.email() == user.email());
 	assert(user.username() == user.username);
+	import vibe.core.log: logInfo;
+	import std.conv: to;
+	logInfo(user.email().values()[0].get());
 
 }
 
@@ -203,7 +206,20 @@ class EmailAddress
 
 	@property string get(string input)
 	{
-		return emailAddress = "" ~ input;
+		if(input == "handle")
+		{
+			return emailHandle;
+		} 
+		else if(input == "domain")
+		{
+			return emailDomain;
+		}
+		else
+		{
+			throw new Error("Invalid Input Argument: only accepts \"handle\" or \"domain\"");
+		}
+
+		
 	}
 
 }

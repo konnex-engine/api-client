@@ -20,6 +20,8 @@
 	],
 	"copyright": "Copyright © 2021, The Konnex Engine Foundation",
 	"dependencies": {
+		"dauth": "~>0.6.4",
+		"dotenv": "~>0.1.1",
 		"fastjwt": "~>1.1.1",
 		"money": "~>3.0.2",
 		"vibe-d": "~>0.9.3"
