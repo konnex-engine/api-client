@@ -2,28 +2,28 @@ module konnexengine.crypto.utilities;
 
 import std.conv : to;
 import std.json;
-
+import std.digest: toHexString;
 import vibe.http.client : requestHTTP, HTTPMethod;
 import vibe.data.json : Json, parseJsonString;
 import vibe.stream.operations : readAllUTF8;
 import vibe.core.log : logInfo, logWarn, logCritical;
 
-import dauth;
+import dauth: makeHash, toPassword, randomSalt, isSameHash, parseHash, Salt;
 import dotenv : Env;
 
 string hashPassword(string plaintext)
 {
-
-	string hash = makeHash(toPassword(cast(char[]) plaintext)).toString();
-
+	char[] input = cast(char[]) plaintext;
+	auto pass = toPassword(input);
+	auto hash = makeHash(pass).toString();
 	return hash;
 }
 
-bool checkPassword(string hashString, char[] password)
+bool checkPassword(string hashString, string password)
 {
-
-	// return isSameHash(toPassword(password), parseHash(hashString));
-	return true;
+	auto input = cast(char[]) password;
+	auto p = toPassword(input);
+	return isSameHash(p, parseHash(hashString));
 }
 
 string generateToken(string ns, string id, string name, string created)
