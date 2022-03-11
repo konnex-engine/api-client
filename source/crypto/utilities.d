@@ -21,7 +21,7 @@ string hashPassword(string plaintext)
 
 bool checkPassword(string hashString, string password)
 {
-	auto input = cast(char[]) password;
+	char[] input = cast(char[]) password;
 	auto p = toPassword(input);
 	return isSameHash(p, parseHash(hashString));
 }

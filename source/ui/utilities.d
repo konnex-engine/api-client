@@ -60,12 +60,13 @@ void writeVideosToFile(Json videoData)
 
 void cacheUser(string r, RedisDatabase* _user, RedisDatabase* _db)
 {
-	string id = parseJsonString(r)["user"]["user_id"].to!string;
-	string email = parseJsonString(r)["user"]["email"].to!string;
-	string username = parseJsonString(r)["user"]["username"].to!string;
+	Json data = parseJsonString(r);
+	string id = data["id"].to!string;
+	string email = data["email"].to!string;
+	string namespace = data["namespace"].to!string;
 
 	_user.set(email,id);
-	_user.set(username, id);
+	// _user.set(username, id);
 
 
 	_user.hset("user: " ~ id, "id", id);
@@ -74,8 +75,8 @@ void cacheUser(string r, RedisDatabase* _user, RedisDatabase* _db)
 	// {
 	// 	_user.hset("user:" ~ id, "email", eml.get());
 	// }
-	_user.hset("user: " ~ id, "username", parseJsonString(r)["user"]["username"].to!string);
-	_user.hset("user: " ~ id, "password", parseJsonString(r)["user"]["password"].to!string);
+	_user.hset("user: " ~ id, "namespace", namespace);
+	// _user.hset("user: " ~ id, "password", password);
 
 	_user.hgetAll("user:" ~ id);
 }

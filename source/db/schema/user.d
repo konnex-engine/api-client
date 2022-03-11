@@ -35,3 +35,4 @@ struct NaturalPersonName
 	Name[] middelNames;
 	Name lastName;
 }
+
